@@ -1,16 +1,18 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:login_screen/home_page.dart';
 import 'package:login_screen/signin.dart';
+import 'package:login_screen/splash_screen.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
-    options: FirebaseOptions(
-      apiKey: "XXX",
-      appId: "XXX",
+    options: const FirebaseOptions(
+      apiKey: "AIzaSyDg6BluQkJ5s_OYQGApG8LyiLIGnLNuJsI",
+      appId: "1:550600550806:android:66abe7e6d07ee679a115b7",
       messagingSenderId: "XXX",
-      projectId: "XXX",
+      projectId: "login-page-fdd41",
     ),
   );
   runApp(const MyApp());
@@ -36,37 +38,9 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const MainPage(),
+      home: const SplashScreen(),
     );
   }
 }
 
-class MainPage extends StatelessWidget {
-  const MainPage({Key? key}) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: StreamBuilder<User?>(
-          stream: FirebaseAuth.instance.authStateChanges(),
-          builder: (context, snapshot) {
-            if (snapshot.hasData) {
-              return HomePage();
-            } else {
-              return LoginPage();
-            }
-          }),
-    );
-  }
-}
-
-class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: Text("Home Page"),
-    );
-  }
-}
