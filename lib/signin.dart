@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:login_screen/anonymous_auth.dart';
+import 'package:login_screen/google_signin.dart';
 import 'package:login_screen/home_page.dart';
 import 'package:login_screen/main.dart';
 import 'package:login_screen/phone_auth.dart';
@@ -155,6 +156,21 @@ class _LoginPageState extends State<LoginPage> {
                           }
                         },
                         child: Text("Sign In Anonymously")),
+                    SizedBox(
+                      height: 50,
+                    ),
+                    ElevatedButton(
+                      // onPressed: signIn,
+                      onPressed: () {
+                        // Validate returns true if the form is valid, or false otherwise.
+
+                        signInWithGoogle();
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(content: Text('Processing Data')),
+                        );
+                      },
+                      child: const Text('Sign In with Google'),
+                    ),
                   ],
                 ),
               ),

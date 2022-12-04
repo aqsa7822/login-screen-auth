@@ -47,7 +47,7 @@ class _PhoneAuthState extends State<PhoneAuth> {
                     ),
                     decoration: InputDecoration(
                       hintText: "Phone Number",
-                      prefix: Text("+1"),
+                      prefix: Text("+92"),
                     ),
                     maxLength: 10,
                     keyboardType: TextInputType.number,

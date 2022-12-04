@@ -42,7 +42,7 @@ class _OTPpageState extends State<OTPpage> {
             children: [
               Center(
                   child: Text(
-                "Verify +1-${widget.phone}",
+                "Verify +92${widget.phone}",
                 style: TextStyle(fontSize: 20),
               )),
               Padding(
@@ -74,7 +74,7 @@ class _OTPpageState extends State<OTPpage> {
 
   verifyPhone() async {
     await FirebaseAuth.instance.verifyPhoneNumber(
-        phoneNumber: "+1${widget.phone}",
+        phoneNumber: "+92${widget.phone}",
         verificationCompleted: (PhoneAuthCredential credential) async {
           await FirebaseAuth.instance.signInWithCredential(credential).then((value) async{
               if(value.user !=null){
@@ -95,7 +95,7 @@ class _OTPpageState extends State<OTPpage> {
             _verificationCode = verificationID;
           });
         },
-        timeout: Duration(seconds: 60));
+        timeout: Duration(seconds: 10));
   }
 
 }
